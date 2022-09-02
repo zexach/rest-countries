@@ -1,6 +1,5 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
-// import { onMounted, ref, VueElement } from 'vue';
 
 </script>
 
@@ -26,7 +25,7 @@ import { RouterLink, RouterView } from 'vue-router'
   .header{
     width: 100%;
     height: 100px;
-    padding: 20px;
+    padding: 20px 160px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -40,5 +39,10 @@ import { RouterLink, RouterView } from 'vue-router'
   .dark-mode{
     font-size: 16px;
     font-weight: 600;
+  }
+  @media screen and (max-width: 850px) {
+    .header{
+      padding: 30px;
+    }
   }
 </style>

@@ -11,6 +11,7 @@ onMounted(async() => {
 
 const props = defineProps(['id'])
 
+
 </script>
 
 <template>
@@ -20,7 +21,7 @@ const props = defineProps(['id'])
         </div>
         <div class="right-panel">
             <h2 class="country-name">{{country.name.common}}</h2>
-            <p class="country-info">Population: {{country.population}}</p>
+            <p class="country-info">Population: {{country.population.toLocaleString('en-US')}}</p>
             <p class="country-info">Region: {{country.region}}</p>
             <p class="country-info">Sub Region: {{country.subregion}}</p>
             <p class="country-info">Capital: {{country.capital[0]}}</p>
@@ -30,7 +31,7 @@ const props = defineProps(['id'])
                 <h3>Border Countries:</h3>
                 <div class="borders">
                     <div class="border" v-for="border in country.borders">
-                        <button>{{border}}</button>
+                        <router-link :to="{ name: 'CountryDetails', params: { id:border} }"><button>{{border}}</button></router-link> 
                     </div>
                 </div>
             </div>

@@ -1,11 +1,10 @@
 <script setup>
 import { onMounted, ref, VueElement } from 'vue';
 import { computed } from '@vue/reactivity';
-import Country from '../components/Country.vue';
-import FilterPanel from '../components/FilterPanel.vue';
 import axios from 'axios';
 import vClickOutside from 'v-click-outside'
-
+import Country from '../components/Country.vue';
+import FilterPanel from '../components/FilterPanel.vue';
 
 const showFilterPanel = ref(false)
 const searched = ref('')

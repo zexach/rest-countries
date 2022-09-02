@@ -9,7 +9,7 @@ defineProps(['country'])
     <div class="country">
         <img :src="country.flags.png">
         <h1 class="country-name">{{country.name.common}}</h1>
-        <p class="country-information">Population: {{country.population}}</p>
+        <p class="country-information">Population: {{country.population.toLocaleString('en-US')}}</p>
         <p class="country-information">Region: {{country.region}}</p>
 
     </div>
