@@ -78,7 +78,13 @@ const props = defineProps(['id'])
     .borders{
         display: flex;
         flex-direction: row;
-        }
+        flex-wrap: wrap;
+    }
+    .borders{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
     h3{
         margin: 20px 0;
     }
@@ -96,6 +102,10 @@ const props = defineProps(['id'])
             margin: 50px 0;
             flex-direction: column;
             align-items: center; 
+        }
+        .right-panel{
+            width: 70%;
+            margin-top: 20px;
         }
     }
 
