@@ -2,28 +2,37 @@
 import { onMounted, ref, VueElement } from 'vue';
 import { computed } from '@vue/reactivity';
 import axios from 'axios';
-import vClickOutside from 'v-click-outside'
 import Country from '../components/Country.vue';
 import FilterPanel from '../components/FilterPanel.vue';
 
 const showFilterPanel = ref(false)
 const searched = ref('')
 const countries = ref([])
+const filteredRegion = ref('All')
 const BASE_URL = 'https://restcountries.com/v3.1/'
 
 onMounted(async () => {
-      const response = await axios.get(BASE_URL + 'all')
-      countries.value = response.data 
+      getCountries('all')
 })
 
 const matchingResult = computed(() => {
-  return countries.value.filter((name) => (name.name.common.toLowerCase()).includes(searched.value))
+  return countries.value.filter((name) => (name.name.common.toLowerCase()).includes(searched.value.toLowerCase()))
 })
 
 const clickOutside = () => {
   if(showFilterPanel.value) {
     showFilterPanel.value = false
   }
+}
+
+const handleFilter = (item) => {
+  item == 'all' ? getCountries('all') : getCountries('region/' + item)
+  filteredRegion.value = item
+}
+
+const getCountries = async (filter) => {
+    const response = await axios.get(BASE_URL + filter)
+    countries.value = response.data 
 }
 
 </script>
@@ -33,10 +42,10 @@ const clickOutside = () => {
     <div class="search-filter">
       <input class="search-bar" placeholder="Search for a country..." v-model="searched" type="text">
       <div class="filter-container">
-        <div class="filter" v-click-outside="clickOutside" @click="showFilterPanel = !showFilterPanel">
-          <p class="filter-text">Filter by Region</p>
+        <div class="filter" @click="showFilterPanel = !showFilterPanel">
+          <p class="filter-text">{{filteredRegion.charAt(0).toUpperCase() + filteredRegion.slice(1)}}</p>
         </div>
-        <FilterPanel @selectedRegion="" :countries="countries" @click="" v-if="showFilterPanel" />
+        <FilterPanel v-click-outside="clickOutside" @selectedRegion="handleFilter" :countries="countries" @click="" v-if="showFilterPanel" />
       </div>
     </div>
     <div class="countries">
