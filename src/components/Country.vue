@@ -1,5 +1,4 @@
 <script setup>
-import { ref } from 'vue';
 
 defineProps(['country'])
 
@@ -11,7 +10,6 @@ defineProps(['country'])
         <h1 class="country-name">{{country.name.common}}</h1>
         <p class="country-information">Population: {{country.population.toLocaleString('en-US')}}</p>
         <p class="country-information">Region: {{country.region}}</p>
-
     </div>
 </template>
 

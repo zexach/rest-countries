@@ -6,8 +6,9 @@ import { RouterLink, RouterView } from 'vue-router'
 <template>
   <div class="container">
     <div class="header">
-      <router-link :to="{name:'home'}"><h2 class="title">Where in the world?</h2></router-link>
-      <span class="dark-mode">&#x263e; Dark Mode</span>
+      <router-link :to="{name:'home'}">
+        <h2 class="title">Where in the world?</h2>
+      </router-link>
     </div>
     <RouterView />
   </div>

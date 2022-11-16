@@ -31,7 +31,7 @@ const props = defineProps(['id'])
                 <h3>Border Countries:</h3>
                 <div class="borders">
                     <div class="border" v-for="border in country.borders">
-                        <router-link :to="{ name: 'CountryDetails', params: { id:border} }"><button>{{border}}</button></router-link> 
+                        <button>{{border}}</button>
                     </div>
                 </div>
             </div>
@@ -42,10 +42,11 @@ const props = defineProps(['id'])
 <style scoped>
       .top-info{
         width: 100%;
-        margin-top: 200px;
+        margin-top: 5rem;
         display: flex;
         flex-direction: row;
         align-items: center;
+        color: rgb(63, 63, 63);
         }
     .flag{
         width: 50%;

@@ -48,7 +48,7 @@ const filterRegion = (item) => {
         cursor: pointer;
     }
     .continent:hover{
-        color: grey
+        color: grey;
     }
     @media screen and (max-width: 850px) {
     .filter-panel{
