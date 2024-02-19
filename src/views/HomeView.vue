@@ -49,7 +49,7 @@
     </div>
     <div class="countries">
       <div v-for="country in matchingResult" :key="country.capital" class="countries-container">
-        <router-link :to="{ name: 'CountryDetails', params: { id:country.name.common } }">
+        <router-link :to="{ name: 'CountryDetails', params: { id: country.name.common } }">
           <Country :country="country" />
         </router-link>
       </div>

@@ -3,13 +3,13 @@ import { onMounted, ref } from 'vue';
 import axios from 'axios';
 
 const countries = ref([])
+const props = defineProps(['id'])
 
 onMounted(async() => {
     const response = await axios.get(`https://restcountries.com/v3.1/name/${props.id}`)
     countries.value = response.data
 })
 
-const props = defineProps(['id'])
 
 
 </script>
@@ -26,8 +26,8 @@ const props = defineProps(['id'])
             <p class="country-info">Sub Region: {{country.subregion}}</p>
             <p class="country-info">Capital: {{country.capital[0]}}</p>
             <p class="country-info bottom-info" v-for="currency in country.currencies">Currencies: {{currency.name}}</p>
-            <p class="country-info">Languages: <span v-for="(lang,index) in country.languages" :key="index">-{{lang}}&nbsp;</span></p>
-            <div class="border-countries">
+            <p class="country-info">Languages: <span v-for="(lang,index) in country.languages" :key="index">{{lang}}&nbsp;</span></p>
+            <div v-if="country.borders" class="border-countries">
                 <h3>Border Countries:</h3>
                 <div class="borders">
                     <div class="border" v-for="border in country.borders">
