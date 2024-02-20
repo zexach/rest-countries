@@ -1,11 +1,11 @@
 <script setup>
-  import { onMounted, ref, VueElement } from 'vue';
+  import { onMounted, ref } from 'vue';
   import { computed } from '@vue/reactivity';
   import axios from 'axios';
   import CountryCard from '../components/CountryCard.vue';
   import FilterPanel from '../components/FilterPanel.vue';
   import Filter from '../components/Filter.vue';
-import SearchCountry from '../components/SearchCountry.vue';
+  import SearchCountry from '../components/SearchCountry.vue';
 
   const showFilterPanel = ref(false)
   const searched = ref('')
@@ -13,10 +13,6 @@ import SearchCountry from '../components/SearchCountry.vue';
   const filteredRegion = ref('All')
   const BASE_URL = 'https://restcountries.com/v3.1/'
 
-  onMounted(async () => {
-        getCountries('all')
-  })
-  
   const setSearchedValue = (val) => searched.value = val;
   const matchingResult = computed(() => {
     return countries.value.filter((name) => (name.name.common.toLowerCase()).includes(searched.value.toLowerCase()))
@@ -37,8 +33,11 @@ import SearchCountry from '../components/SearchCountry.vue';
       const response = await axios.get(BASE_URL + filter)
       countries.value = response.data 
   }
-
-
+  
+  onMounted(async () => {
+        getCountries('all')
+  })
+  
 </script>
 
 <template>
@@ -54,7 +53,7 @@ import SearchCountry from '../components/SearchCountry.vue';
 
     <div class="countries">
       <div v-for="country in matchingResult" :key="country.capital" class="countries-container">
-        <router-link :to="{ name: 'CountryDetails', params: { id: country.name.common } }">
+        <router-link :to="{ name: 'CountryView', params: { id: country.name.common } }">
           <CountryCard :country="country" />
         </router-link>
       </div>

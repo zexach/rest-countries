@@ -11,7 +11,7 @@ const router = createRouter({
       component: HomeView
     },
     { path: '/name/:id',
-      name: 'CountryDetails',
+      name: 'CountryView',
       component: CountryView,
       props: true
     }
