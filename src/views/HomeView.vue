@@ -64,7 +64,7 @@
 <style scoped>
   .content{
     width: 100%;
-    padding: 0 20px;
+    padding: 0 20px 20px 20px;
     display: flex;
     flex-direction: column;
     align-items: center;

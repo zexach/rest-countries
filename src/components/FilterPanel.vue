@@ -1,14 +1,9 @@
 <script setup>
 
-defineProps(['countries'])
-
 const emit = defineEmits(['selectedRegion'])
-
-
 const filterRegion = (item) => {
     emit('selectedRegion', item)
 }
-
 </script>
 
 <template>

@@ -1,14 +1,11 @@
 <script setup>
-import { storeToRefs } from 'pinia'
 import { useFavouriteCountryStore } from '../stores/useFavouriteCountryStore.js'
 
-const props = defineProps(['country', 'isFavouriteView'])
 
 const favouriteStore = useFavouriteCountryStore();
-const { favouriteCountries } = storeToRefs(favouriteStore);
 const { addToFavourite, removeFromFavourite } = favouriteStore;
 
-
+const props = defineProps(['country', 'isFavouriteView'])
 </script>
 
 <template>
@@ -23,8 +20,8 @@ const { addToFavourite, removeFromFavourite } = favouriteStore;
         </div>
       </div>
     </router-link>
-      <button v-if="!isFavouriteView" @click="addToFavourite(props.country)" class="add-to-favourite">Add to favorites</button>
-      <button v-else @click="removeFromFavourite(props.country)" class="add-to-favourite">Remove from favourites</button>
+    <button v-if="!isFavouriteView" @click="addToFavourite(props.country)" class="add-to-favourite">Add to favorites</button>
+    <button v-else @click="removeFromFavourite(props.country)" class="add-to-favourite">Remove from favourites</button>
   </div>
 </template>
 
