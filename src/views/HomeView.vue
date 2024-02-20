@@ -53,9 +53,7 @@
 
     <div class="countries">
       <div v-for="country in matchingResult" :key="country.capital" class="countries-container">
-        <router-link :to="{ name: 'CountryView', params: { id: country.name.common } }">
-          <CountryCard :country="country" />
-        </router-link>
+          <CountryCard :country="country" :isFavouriteView="false" />
       </div>
     </div>
 
@@ -67,7 +65,6 @@
   .content{
     width: 100%;
     padding: 0 20px;
-    margin-bottom: 300px;
     display: flex;
     flex-direction: column;
     align-items: center;

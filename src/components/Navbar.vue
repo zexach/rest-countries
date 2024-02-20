@@ -8,6 +8,9 @@ import { RouterLink } from 'vue-router';
       <router-link :to="{name:'home'}">
         <h2 class="title">Where in the world?</h2>
       </router-link>
+      <router-link :to="{name: 'Favourites'}">
+        <h3 class="page">Favourite countries</h3>
+      </router-link>
     </div>
 </template>
 
@@ -25,6 +28,9 @@ import { RouterLink } from 'vue-router';
   .title{
     font-size: 18px;
     font-weight: 700;
+  }
+  .page{
+    cursor: pointer;
   }
   @media screen and (max-width: 850px) {
     .header{
