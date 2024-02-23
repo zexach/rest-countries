@@ -4,7 +4,6 @@ import { useFavouriteCountryStore } from '../stores/useFavouriteCountryStore';
 import CountryCard from '../components/CountryCard.vue';
 
 const favouriteStore = useFavouriteCountryStore();
-
 const { favouriteCountries } = storeToRefs(favouriteStore);
 
 </script>
